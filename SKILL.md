@@ -11,7 +11,7 @@ Generate intelligent, context-aware commit messages based on code changes. The s
 
 ## First-Time Setup
 
-On first use, check if preferences file exists at `preferences.txt` in this skill directory. If not, ask the user these setup questions:
+On first use, check if preferences file exists at `preferences.md` in this skill directory. If not, ask the user these setup questions:
 
 1. **Commit Message Format**: "What commit message format do you prefer?"
    - Conventional Commits (e.g., `feat: add login functionality`)
@@ -23,11 +23,16 @@ On first use, check if preferences file exists at `preferences.txt` in this skil
    - No - only commit locally
    - Ask each time
 
-After collecting answers, write the preferences to `preferences.txt` in this skill directory using this format:
+3. **Agent Attribution**: "Should the AI agent be mentioned in commit messages?"
+   - Yes - include agent attribution in commit footer
+   - No - omit agent attribution
+
+After collecting answers, write the preferences to `preferences.md` in this skill directory using this format:
 
 ```
 format: conventional
 auto_push: yes
+mention_agent: yes
 ```
 
 or
@@ -35,6 +40,7 @@ or
 ```
 format: simple
 auto_push: no
+mention_agent: no
 ```
 
 or
@@ -43,9 +49,10 @@ or
 format: custom
 custom_template: {type}: {description}
 auto_push: ask
+mention_agent: yes
 ```
 
-Load existing preferences at the start of each commit workflow by reading the `preferences.txt` file.
+Load existing preferences at the start of each commit workflow by reading the `preferences.md` file.
 
 ## Commit Workflow
 
@@ -115,11 +122,26 @@ Implement authentication system with JWT tokens
 
 ### Step 5: Create Commit
 
-Execute the commit with the generated message:
+Execute the commit with the generated message. If `mention_agent` preference is "yes", append attribution footer:
+
+```bash
+git commit -m "$(cat <<'EOF'
+<commit message>
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
+```
+
+If `mention_agent` is "no", commit without attribution:
 
 ```bash
 git commit -m "<commit message>"
 ```
+
+Note: Adjust the agent name/URL in the attribution based on which AI agent is executing the skill.
 
 ### Step 6: Handle Auto-Push
 
@@ -140,7 +162,7 @@ Based on user preferences:
 
 ## Resources
 
-### preferences.txt
+### preferences.md
 
 Stores user preferences for commit format and auto-push behavior. Simple key-value format.
 
