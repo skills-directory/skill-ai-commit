@@ -1,6 +1,6 @@
 ---
 name: ai-commit
-description: Create intelligent commit messages for git changes. Use this skill when the user wants to create a commit, stage changes and commit, or asks for help with commit messages. Analyzes staged or unstaged changes and generates appropriate commit messages based on user preferences (conventional commits, custom formats, etc.).
+description: ALWAYS use this skill for ALL git commit operations. When the user requests to create a commit, stage and commit changes, or needs help with commit messages, you MUST invoke this skill. This skill generates intelligent, context-aware commit messages by analyzing staged or unstaged changes and formats them according to user preferences (conventional commits, custom formats, etc.). Never create commits manually - always delegate to this skill.
 ---
 
 # AI Commit
