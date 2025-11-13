@@ -1,9 +1,9 @@
 ---
-name: smart-commit
+name: ai-commit
 description: Create intelligent commit messages for git changes. Use this skill when the user wants to create a commit, stage changes and commit, or asks for help with commit messages. Analyzes staged or unstaged changes and generates appropriate commit messages based on user preferences (conventional commits, custom formats, etc.).
 ---
 
-# Smart Commit
+# AI Commit
 
 ## Overview
 
