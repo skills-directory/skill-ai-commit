@@ -160,16 +160,23 @@ Based on user preferences:
 - **Reference issues**: Include ticket numbers if applicable (e.g., `fixes #123`)
 - **Avoid generic messages**: Never use "Update", "Fix", "Changes" alone
 
-## Resources
+## Quick Reference
 
-### preferences.md
+### Conventional Commit Types
+- `feat`: New feature | `fix`: Bug fix | `docs`: Documentation | `style`: Formatting
+- `refactor`: Code restructure | `perf`: Performance | `test`: Tests | `chore`: Maintenance
 
-Stores user preferences for commit format and auto-push behavior. Simple key-value format.
+### Good Commit Patterns
+- Features: "Add [feature]", "Implement [functionality]"
+- Fixes: "Fix [specific problem]", "Resolve [issue]"
+- Refactors: "Extract [code] into [destination]", "Simplify [area]"
 
-### references/
-
-- `conventional_commits.md` - Complete conventional commits specification and examples
-- `commit_examples.md` - Collection of good and bad commit message examples
+### What Makes a Good Commit
+- ✅ Specific and clear ("Fix null check in payment processing")
+- ✅ Imperative mood ("Add feature" not "Added feature")
+- ✅ Explains why, not how
+- ❌ Vague ("Update files", "Fix bug")
+- ❌ Multiple unrelated changes in one commit
 
 ## Common Scenarios
 
